@@ -10,7 +10,17 @@ public class SpawnerCube : Spawner<Cube>
     [SerializeField] private float _startDelay = 0.0f;
     [SerializeField] private float _spawnHeight = 20f;
 
+    private WaitForSeconds _waitStartDelay;
+    private WaitForSeconds _waitRepeatRate;
+
     private int _zeroPlatform = 0;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        _waitStartDelay = new WaitForSeconds(_startDelay);
+        _waitRepeatRate = new WaitForSeconds(_repeatRate);
+    }
 
     private void Start()
     {
@@ -29,7 +39,7 @@ public class SpawnerCube : Spawner<Cube>
             return _startPoint.transform.position;
 
         Platform randomPlatform = _platforms[Random.Range(_zeroPlatform, _platforms.Length)];
-        Bounds platformBounds = randomPlatform.GetComponent<Collider>().bounds;
+        Bounds platformBounds = randomPlatform.Collider.bounds;
 
         Vector3 randomPosition = new Vector3(
             Random.Range(platformBounds.min.x, platformBounds.max.x),
@@ -42,12 +52,12 @@ public class SpawnerCube : Spawner<Cube>
 
     private IEnumerator SpawnCoroutine()
     {
-        yield return new WaitForSeconds(_startDelay);
+        yield return _waitStartDelay;
 
         while (enabled)
         {
             Spawn(GetRandomPositionOverPlatform());
-            yield return new WaitForSeconds(_repeatRate);
+            yield return _waitRepeatRate;
         }
     }
 }

@@ -28,19 +28,19 @@ public class Spawner<T> : MonoBehaviour where T :MonoBehaviour, IDestroyableObje
         @object.gameObject.SetActive(true);
     }
 
-    protected virtual T CreateObject()
-    {
-        T newObj = Instantiate(_objectPrefab);
-        TotalCreated++;
-
-        return newObj;
-    }
-
     protected virtual void OnObjectDestroyed(T obj)
     {
         obj.Destroyed -= OnObjectDestroyed;
         _pool.Release(obj);
         ActiveCount--;
         obj.gameObject.SetActive(false);
+    }
+
+    private T CreateObject()
+    {
+        T newObj = Instantiate(_objectPrefab);
+        TotalCreated++;
+
+        return newObj;
     }
 }

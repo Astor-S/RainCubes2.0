@@ -156,6 +156,7 @@ GameObject:
   - component: {fileID: 412024468}
   - component: {fileID: 412024470}
   - component: {fileID: 412024469}
+  - component: {fileID: 412024471}
   m_Layer: 5
   m_Name: CubeCounter
   m_TagString: Untagged
@@ -280,6 +281,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 412024467}
   m_CullTransparentMesh: 1
+--- !u!114 &412024471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 412024467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffe35afd7de2e3d418158d670a7c80e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spawner: {fileID: 2139324697}
+  _statsText: {fileID: 412024469}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -777,7 +792,6 @@ GameObject:
   - component: {fileID: 1830242286}
   - component: {fileID: 1830242289}
   - component: {fileID: 1830242288}
-  - component: {fileID: 1830242287}
   m_Layer: 5
   m_Name: Counter
   m_TagString: Untagged
@@ -805,22 +819,6 @@ RectTransform:
   m_AnchoredPosition: {x: 680, y: 213}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1830242287
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1830242285}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04213cc662b4c8e42ad2136d106dd08d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _cubeSpawner: {fileID: 2139324697}
-  _bombSpawner: {fileID: 1000066389}
-  _cubeStatsText: {fileID: 412024469}
-  _bombStatsText: {fileID: 1991670104}
 --- !u!114 &1830242288
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -998,6 +996,7 @@ GameObject:
   - component: {fileID: 1991670103}
   - component: {fileID: 1991670105}
   - component: {fileID: 1991670104}
+  - component: {fileID: 1991670106}
   m_Layer: 5
   m_Name: BombCounter
   m_TagString: Untagged
@@ -1122,6 +1121,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1991670102}
   m_CullTransparentMesh: 1
+--- !u!114 &1991670106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1991670102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bb5f21441c43c34482d51280f572c6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spawner: {fileID: 1000066389}
+  _statsText: {fileID: 1991670104}
 --- !u!1 &2139324694
 GameObject:
   m_ObjectHideFlags: 0

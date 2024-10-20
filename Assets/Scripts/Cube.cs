@@ -18,10 +18,6 @@ public class Cube : MonoBehaviour, IDestroyableObject<Cube>
     private void Awake()
     {
         _renderer = GetComponent<Renderer>();
-    }
-
-    private void Start()
-    {
         _initialColor = _renderer.material.color;
     }
 

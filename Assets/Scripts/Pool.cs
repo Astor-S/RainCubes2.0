@@ -4,10 +4,8 @@ using System.Collections.Generic;
 public class Pool<T> where T : IDestroyableObject<T>
 {
     private Stack<T> _objects = new Stack<T>();
-    private Func<T> _createFunc;
     
-    public int AvailableObjectsCount =>
-        _objects.Count;
+    private Func<T> _createFunc;
 
     public Pool(Func<T> createFunc) 
     {
