@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -10,6 +11,8 @@ public class Cube : MonoBehaviour, IDestroyableObject<Cube>
 
     private Renderer _renderer;
     private Color _initialColor;
+    private WaitForSeconds _waitLifeTimeAfterTouch;
+
     private bool _hasTouchedPlatform = false;
     private float _lifeTimeAfterTouch;
 
@@ -34,7 +37,8 @@ public class Cube : MonoBehaviour, IDestroyableObject<Cube>
             _hasTouchedPlatform = true;
             ChangeColor();
             _lifeTimeAfterTouch = UnityEngine.Random.Range(_minDuration, _maxDuration);
-            Invoke(nameof(Destroy), _lifeTimeAfterTouch);
+            _waitLifeTimeAfterTouch = new WaitForSeconds(_lifeTimeAfterTouch);
+            StartCoroutine(DelayedDestroy());
         }
     }
 
@@ -46,5 +50,11 @@ public class Cube : MonoBehaviour, IDestroyableObject<Cube>
     private void Destroy()
     {
         Destroyed?.Invoke(this);
+    }
+
+    private IEnumerator DelayedDestroy()
+    {
+        yield return _waitLifeTimeAfterTouch;
+        Destroy();
     }
 }
